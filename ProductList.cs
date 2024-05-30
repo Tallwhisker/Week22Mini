@@ -14,29 +14,28 @@ namespace ProductListApp
             this.SortedProducts = new List<Product>();
         }
 
-        public List<Product> Products 
+        public List<Product> Products
         { get; set; }
 
-        public List<Product> SortedProducts 
+        public List<Product> SortedProducts
         { get; set; }
-
 
         public void AddProduct() //Method loop for adding products and checking input
         {
             Console.WriteLine();
             Console.WriteLine("@ Main/Add: Add products, 'exit' when done.");
-            while (true) 
+            while (true)
             {
                 Console.ForegroundColor = ConsoleColor.White; //Start each loop setting text to white
                 Console.Write("Product Category: ");
                 string productCategory = Console.ReadLine().Trim();
 
-                if (String.IsNullOrEmpty(productCategory)) 
+                if (String.IsNullOrEmpty(productCategory))
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Error: Product Category empty.");
                     continue;
-                } 
+                }
                 else if (productCategory == "exit") //Provide an exit at question #1
                 {
                     Console.WriteLine("Returning to Main.");
@@ -51,12 +50,12 @@ namespace ProductListApp
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Error: Product Name empty. (A-z)");
-                    continue ;
+                    continue;
                 }
                 else if (productName == "exit") //Provide an exit at question #2
                 {
                     Console.WriteLine("Returning to Main.");
-                    return; 
+                    return;
                 }
 
                 try //Try to convert price input
@@ -64,7 +63,7 @@ namespace ProductListApp
                     Console.Write("Product Price: ");
                     productPrice = Convert.ToDouble(Console.ReadLine());
                 }
-                catch 
+                catch
                 {
                     Console.ForegroundColor = ConsoleColor.Red;
                     Console.WriteLine("Error: Incorrect Price value. (0-9)");
@@ -89,13 +88,13 @@ namespace ProductListApp
             {
                 Console.WriteLine($"Search results: {this.SortedProducts.Count}");
                 Console.WriteLine("Category".PadRight(10) + "Name".PadRight(10) + "Price");
-                Console.ForegroundColor= ConsoleColor.Cyan;
+                Console.ForegroundColor = ConsoleColor.Cyan;
 
                 foreach (Product product in this.SortedProducts)
                 {
                     Console.WriteLine(product.Category.PadRight(10) + product.Name.PadRight(10) + product.Price);
                 }
-            } 
+            }
             else
             {
                 Console.ForegroundColor = ConsoleColor.Red;
@@ -107,7 +106,7 @@ namespace ProductListApp
         {
             Console.WriteLine();
             Console.WriteLine("Sorted list:");
-            Console.WriteLine("Category".PadRight(20)+"Name".PadRight(20)+"Price");
+            Console.WriteLine("Category".PadRight(20) + "Name".PadRight(20) + "Price");
             this.SortedProducts = this.Products.OrderBy(product => product.Price).ToList();
 
             foreach (var item in this.SortedProducts)
@@ -117,6 +116,5 @@ namespace ProductListApp
 
             Console.WriteLine("Total price:".PadRight(40) + this.SortedProducts.Sum(product => product.Price));
         }
-
     }
 }

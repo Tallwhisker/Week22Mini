@@ -15,13 +15,13 @@ namespace ProductListApp
             this.Price = price;
         }
 
-        public string Category 
+        public string Category
         { get; }
 
-        public string Name 
+        public string Name
         { get; }
 
-        public double Price 
+        public double Price
         { get; }
     }
 }

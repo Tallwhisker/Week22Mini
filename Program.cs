@@ -13,40 +13,43 @@ Console.WriteLine("-----------------");
 Console.WriteLine(" Product Manager");
 Console.WriteLine("-----------------");
 
+string input = "";
 
-while (true)
+while (input != "quit")
 {
     Console.ForegroundColor = ConsoleColor.White; //At start of every loop set text to white
     Console.WriteLine();
     Console.WriteLine("Commands: 'add' 'list' 'search' 'quit'");
 
     Console.Write("@ Main: ");
-    string input = Console.ReadLine().Trim().ToLower();
+    input = Console.ReadLine().Trim().ToLower();
 
-    if (input == "quit") //Show list and stop main loop
+    switch (input)
     {
-        productList.ShowList();
-        break;
-    }
-    else if (input == "add") //Go to AddProduct loop
-    {
-        productList.AddProduct();
-    }
-    else if (input == "list") //Print the list
-    {
-        productList.ShowList();
-    }
-    else if (input == "search") //Ask for search term and send to search method
-    {
-        Console.WriteLine();
-        Console.Write("Search for product name: ");
-        string searchTerm = Console.ReadLine().Trim().ToLower();
-        productList.SearchForProductName(searchTerm);
-    }
-    else //If none of the above are recognized, go back to input
-    {
-        Console.ForegroundColor = ConsoleColor.Red;
-        Console.WriteLine("Unknown input.");
-        continue;
+        case "add": //Go to AddProduct loop
+            productList.AddProduct();
+            break;
+
+        case "list": //Print the list
+            productList.ShowList();
+            break;
+
+        case "search": //Ask for search term and send to search method
+            Console.WriteLine();
+            Console.Write("Search for product name: ");
+            string searchTerm = Console.ReadLine().Trim().ToLower();
+            productList.SearchForProductName(searchTerm);
+            break;
+
+        case "quit":
+            break;
+
+        default: //If none of the above are recognized, tell user.
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("Unknown input.");
+            break;
     }
 }
+
+Console.ForegroundColor = ConsoleColor.White;
+productList.ShowList();
