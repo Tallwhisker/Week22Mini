@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProductListApp
 {
-    public class Product
+    public class Product //The product class that makes the objects for list
     {
         public Product(double price, string name, string category)
         {

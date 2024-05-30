@@ -13,43 +13,37 @@ Console.WriteLine("-----------------");
 Console.WriteLine(" Product Manager");
 Console.WriteLine("-----------------");
 
-//DEBUGstuff
-productList.Products.Add(new Product(194, "name1", "cat1"));
-productList.Products.Add(new Product(543, "name2", "cat2"));
-productList.Products.Add(new Product(56734, "name3", "cat3"));
-productList.Products.Add(new Product(23, "name4", "cat4"));
 
 while (true)
 {
-    Console.ForegroundColor = ConsoleColor.White;
+    Console.ForegroundColor = ConsoleColor.White; //At start of every loop set text to white
     Console.WriteLine();
     Console.WriteLine("Commands: 'add' 'list' 'search' 'quit'");
 
-    Console.Write("Main: ");
+    Console.Write("@ Main: ");
     string input = Console.ReadLine().Trim().ToLower();
 
-
-    if (input == "quit")
+    if (input == "quit") //Show list and stop main loop
     {
         productList.ShowList();
         break;
     }
-    else if (input == "add")
+    else if (input == "add") //Go to AddProduct loop
     {
         productList.AddProduct();
     }
-    else if (input == "list")
+    else if (input == "list") //Print the list
     {
         productList.ShowList();
     }
-    else if (input == "search")
+    else if (input == "search") //Ask for search term and send to search method
     {
         Console.WriteLine();
         Console.Write("Search for product name: ");
         string searchTerm = Console.ReadLine().Trim().ToLower();
         productList.SearchForProductName(searchTerm);
     }
-    else
+    else //If none of the above are recognized, go back to input
     {
         Console.ForegroundColor = ConsoleColor.Red;
         Console.WriteLine("Unknown input.");
